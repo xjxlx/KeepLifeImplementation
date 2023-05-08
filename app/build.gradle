@@ -1,0 +1,77 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+def configCompile = rootProject.ext.android
+
+android {
+    namespace 'com.android.keeplife'
+    compileSdk configCompile.compileSdkVersion
+
+    defaultConfig {
+        applicationId "com.android.keeplife"
+        minSdk configCompile.minSdkVersion
+        targetSdk configCompile.targetSdkVersion
+        versionCode configCompile.versionCode
+        versionName configCompile.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        flavorDimensions configCompile.versionName
+
+        /*账号类型,为了保持唯一，一般使用applicationId*/
+        resValue "string", "account_type", applicationId
+        /*账号authorities，为了保持唯一，一般使用applicationId*/
+        resValue "string", "account_authority", applicationId
+        /*当前应用的名字，会显示在注册列表中，大标题*/
+        resValue "string", "account_name", "liuxing"
+        /*当前应用的密码,可以设置实际的值，但是不会显示出来*/
+        resValue "string", "account_password", "19900713op"
+        /*当前应用列表中的小标题，在大标题的下方，会显示出来*/
+        resValue "string", "account_label", "应用保活"
+        /*账号同步页面的说明*/
+        resValue "string", "account_sync_provider_label", "同步账号"
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        viewBinding = true
+    }
+
+    // ndk version
+    ndkVersion = "21.4.7075529"
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+//    implementation project(path: ':keeplife')
+    implementation project(path: ':apphelper2')
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    //协程依赖 - 基础
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+}

@@ -1,0 +1,14 @@
+ext {
+    navigation_version = "2.5.3"
+    lifecycle_version = "2.5.0"
+    detekt_version = "1.21.0"
+
+    android = [
+            compileSdkVersion: 31,
+            buildToolsVersion: "30.0.3",
+            minSdkVersion    : 30,
+            targetSdkVersion : 30,
+            versionCode      : 1,
+            versionName      : "1.0"
+    ]
+}
