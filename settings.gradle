@@ -28,5 +28,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "KeepLifeImplementation"
 include ':app'
-//include ':keeplife'
+include ':keeplife'
 include ':apphelper2'
