@@ -4,11 +4,11 @@ import android.Manifest
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
-import com.android.apphelper2.utils.SystemUtil
 import com.android.apphelper2.utils.permission.PermissionMultipleCallBackListener
 import com.android.apphelper2.utils.permission.PermissionUtil
 import com.android.keeplife.account.AccountHelper
 import com.android.keeplife.account.KeepNotification
+import com.android.keeplife.account.LifecycleManager
 import com.android.keeplife.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -34,9 +34,9 @@ class MainActivity : AppCompatActivity() {
                     override fun onCallBack(allGranted: Boolean,
                         map: MutableMap<String, Boolean>) { //                        accountHelper.addAccount(this@MainActivity) {
 
-//                        LifecycleManager.instance.startLifecycle(this@MainActivity)
+                        LifecycleManager.instance.startLifecycle(this@MainActivity)
 
-                        SystemUtil.jumpApplicationSetting(this@MainActivity)
+//                        SystemUtil.jumpApplicationSetting(this@MainActivity)
                     }
                 })
         }
